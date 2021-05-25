@@ -38,7 +38,7 @@ use const ARRAY_FILTER_USE_BOTH;
  * @author  Ignace Nyamagana Butera <nyamsprod@gmail.com>
  * @since   4.1.0
  */
-final class Sequence implements ArrayAccess, Countable, IteratorAggregate, JsonSerializable
+class Sequence implements ArrayAccess, Countable, IteratorAggregate, JsonSerializable
 {
     /**
      * @var Period[]

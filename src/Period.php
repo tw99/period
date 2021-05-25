@@ -31,7 +31,7 @@ use function sprintf;
  * @author  Ignace Nyamagana Butera <nyamsprod@gmail.com>
  * @since   1.0.0
  */
-final class Period implements JsonSerializable
+class Period implements JsonSerializable
 {
     private const ISO8601_FORMAT = 'Y-m-d\TH:i:s.u\Z';
 
@@ -70,6 +70,11 @@ final class Period implements JsonSerializable
      * @var string
      */
     private $boundaryType;
+
+    /**
+     * @var array
+     */
+    private $metadata = [];
 
     /**
      * Creates a new instance.
@@ -329,6 +334,11 @@ final class Period implements JsonSerializable
     public function getDateInterval(): DateInterval
     {
         return $this->startDate->diff($this->endDate);
+    }
+
+    public function metadata(): array
+    {
+        return $this->metadata;
     }
 
     /**************************************************
@@ -1176,5 +1186,15 @@ final class Period implements JsonSerializable
         }
 
         return $interval;
+    }
+
+    /**
+     * @param array $data
+     */
+    public function withMetadata($data): self
+    {
+        $this->metadata = $data;
+
+        return $this;
     }
 }
